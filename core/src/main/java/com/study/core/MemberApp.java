@@ -8,7 +8,10 @@ import com.study.core.member.MemberServiceImpl;
 // 회원 도메인 실행 예시(순수 자바) -> 테스트 이용
 public class MemberApp {
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
+//        MemberService memberService = new MemberServiceImpl();
+
         Member member = new Member(1L, "memberA", Grade.VIP);
         memberService.join(member);
 
