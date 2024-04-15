@@ -2,6 +2,7 @@ package com.study.core.order;
 
 import com.study.core.discount.DiscountPolicy;
 import com.study.core.discount.FixDicountPolicy;
+import com.study.core.discount.RateDiscountPolicy;
 import com.study.core.member.Member;
 import com.study.core.member.MemberRepository;
 import com.study.core.member.MemoryMemberRepository;
@@ -9,7 +10,9 @@ import com.study.core.member.MemoryMemberRepository;
 public class OrderServiceImpl implements OrderService {
     // 회원과 할인 관련
     private final MemberRepository memberRepository = new MemoryMemberRepository();
-    private final DiscountPolicy discountPolicy = new FixDicountPolicy();
+//    private final DiscountPolicy discountPolicy = new FixDicountPolicy();
+    // 인터페이스에만 의존하도록
+    private DiscountPolicy discountPolicy;
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
